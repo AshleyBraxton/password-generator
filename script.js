@@ -12,3 +12,14 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+prompt ("How many characters would you like in your password? (must be at least 8 characters)")
+confirm("Would you like to use lowercase letters?");
+confirm("Would you like to use uppercase Letters?");
+confirm("Would you like to use numbers?");
+confirm("Would you like to use special characters?");
+
+const numbers = [1,2,3,4,5,6,7,8,9];
+const symbols= ['!', '@', '$', '_','?', '%', '+','&','*','#']
+const lowercase= ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+const uppercase= ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
