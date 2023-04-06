@@ -15,10 +15,21 @@ generateBtn.addEventListener( 'click', writePassword ());
 
 function generatePassword () {
   
-const numbers = [1,2,3,4,5,6,7,8,9];
-const symbols= ['!', '@', '$', '_','?', '%', '+','&','*','#']
+  // var availableCharacters = {
+  //   hasLower: includeLowercase,
+  //   hasUper: includeUppercase,
+  //   hasNumbers: includeNumbers,
+  //   hasSymbol: includeSymbols, 
+  // }
+ 
+
+
+
+
+const numbers = ['123456789'];
+const symbols= ['!@$_?%+&*#']
 const lowercase= ['abcdefghijklmnopqrstuvwxyz']
-const uppercase= ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+const uppercase= ['ABCDEFGHIJKLMNOPQRSTUVWXYZ']
 
 
 const passLength = Number(prompt("How many characters would you like in your password? (must be at least 8 characters)"));
@@ -33,36 +44,58 @@ const includeUppercase = confirm("Would you like to use uppercase Letters?");
 const includeNumbers = confirm("Would you like to use numbers?");
 const includeSymbols = confirm("Would you like to use special characters?");
 
-var includedArr = '';
 
-if (includeLowercase) {
-includedArr += lowercase;
-}
+// var includedArr = '';
 
-if (includeUppercase) {
-includedArr += uppercase;
-}
+// if (includeLowercase) {
+// includedArr += lowercase;
+// }
 
-if (includeNumbers) {
-includedArr += numbers
-}
+// if (includeUppercase) {
+// includedArr += uppercase;
+// }
+
+// if (includeNumbers) {
+// includedArr += numbers
+// }
 
 
-if (includeSymbols) {
-includedArr += symbols ;
-}
-console.log(includedArr)
-console.log(passLength)
+// if (includeSymbols) {
+// includedArr += symbols ;
+// }
+// console.log(includedArr)
+// console.log(passLength)
+
 
 if (!includeLowercase && !includeUppercase && !includeNumbers && !includeSymbols){
   alert('You must pick at least 1 character type to include')
   return '';
 }
-for (var i = 0; i < passLength; i++) {
-  var random = includedArr[Math.floor(Math.random()*includedArr.length)];
+ 
+const createPassword = (passLength, includeNumbers, includeLowercase, includeSymbols, includeUppercase) => {
+  const availableCharacters = [
+    ...(includeNumbers ? numbers : []),
+    ...(includeLowercase ? lowercase : []),
+    ...(includeSymbols ? symbols : []),
+    ...(includeUppercase ? uppercase : []),
+  ] ;
 
-console.log(random)
-return random
+var result = [];
+
+for (var i = 0; i < passLength; i++) {
+  var random = Math.floor(Math.random()*availableCharacters.length);
+  result += availableCharacters[random];
+
+console.log(result)
+return (result)
+
 }
-  }
 }
+console.log (createPassword (passLength, true ,true ,true ,true))
+}
+
+}
+
+
+//   }
+// }
