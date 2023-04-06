@@ -1,20 +1,11 @@
+var includedArr = [];
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-// Add event listener to generate button
-generateBtn.addEventListener( 'click', writePassword ());
 
 
 
 function generatePassword () {
-  
+  includedArr = [];
   // var availableCharacters = {
   //   hasLower: includeLowercase,
   //   hasUper: includeUppercase,
@@ -26,13 +17,17 @@ function generatePassword () {
 
 
 
-const numbers = ['123456789'];
-const symbols= ['!@$_?%+&*#']
-const lowercase= ['abcdefghijklmnopqrstuvwxyz']
-const uppercase= ['ABCDEFGHIJKLMNOPQRSTUVWXYZ']
+var numbers = '123456789';
+numbers= numbers.split('')
+var symbols= '!@$_?%+&*#'
+symbols= symbols.split('')
+var lowercase= 'abcdefghijklmnopqrstuvwxyz'
+lowercase= lowercase.split('')
+var uppercase= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+uppercase= uppercase.split('')
 
 
-const passLength = Number(prompt("How many characters would you like in your password? (must be at least 8 characters)"));
+const passLength = parseInt(prompt("How many characters would you like in your password? (must be at least 8 characters)"));
 if (!passLength) {
   alert('Please choose a password length');
 
@@ -45,57 +40,72 @@ const includeNumbers = confirm("Would you like to use numbers?");
 const includeSymbols = confirm("Would you like to use special characters?");
 
 
-// var includedArr = '';
-
-// if (includeLowercase) {
-// includedArr += lowercase;
-// }
-
-// if (includeUppercase) {
-// includedArr += uppercase;
-// }
-
-// if (includeNumbers) {
-// includedArr += numbers
-// }
-
-
-// if (includeSymbols) {
-// includedArr += symbols ;
-// }
-// console.log(includedArr)
-// console.log(passLength)
-
 
 if (!includeLowercase && !includeUppercase && !includeNumbers && !includeSymbols){
   alert('You must pick at least 1 character type to include')
   return '';
 }
- 
-const createPassword = (passLength, includeNumbers, includeLowercase, includeSymbols, includeUppercase) => {
-  const availableCharacters = [
-    ...(includeNumbers ? numbers : []),
-    ...(includeLowercase ? lowercase : []),
-    ...(includeSymbols ? symbols : []),
-    ...(includeUppercase ? uppercase : []),
-  ] ;
+// const createPassword = (passLength, includeNumbers, includeLowercase, includeSymbols, includeUppercase) => {
+  
 
-var result = [];
 
+if (includeLowercase) {
+includedArr = includedArr.concat(lowercase);
+}
+
+
+if (includeUppercase) {
+includedArr = includedArr.concat(uppercase);
+}
+
+
+if (includeNumbers) {
+includedArr = includedArr.concat(numbers)
+}
+
+
+if (includeSymbols) {
+includedArr = includedArr.concat(symbols) ;
+}
+// console.log(createPassword)
+console.log(includedArr)
+console.log(passLength)
+// let includedArr = '';
+var randompass = []
+// console.log(createPassword((passLength, includeNumbers, includeLowercase, includeSymbols, includeUppercase)))
 for (var i = 0; i < passLength; i++) {
-  var random = Math.floor(Math.random()*availableCharacters.length);
-  result += availableCharacters[random];
-
-console.log(result)
-return (result)
-
-}
-}
-console.log (createPassword (passLength, true ,true ,true ,true))
-}
-
-}
-
-
-//   }
+  var passIndex = Math.floor(Math.random()*includedArr.length);
+  var randomChar = includedArr[passIndex];
+  randompass.push (randomChar)
+  // var random = Math.floor(Math.random()*includedArr.length);;
 // }
+
+}
+console.log(randompass)
+return randompass.join('')
+//  }
+
+
+
+
+
+
+
+}
+}
+// const availableCharacters = [
+  //   ...(includeNumbers ? numbers : []),
+  //   ...(includeLowercase ? lowercase : []),
+  //   ...(includeSymbols ? symbols : []),
+  //   ...(includeUppercase ? uppercase : []),
+  // ] ;
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
+// Add event listener to generate button
+generateBtn.addEventListener( 'click', writePassword ());
