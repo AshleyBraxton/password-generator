@@ -1,9 +1,3 @@
-// var length = Number(prompt("How many characters would you like in your password? (must be at least 8 characters)"));
-// var lowercaseLetters = window.confirm("Would you like to use lowercase letters?");
-// var uppercaseLetters = window.confirm("Would you like to use uppercase Letters?");
-// var number = confirm("Would you like to use numbers?");
-// var specialChar = confirm("Would you like to use special characters?");
-
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
@@ -19,55 +13,56 @@ generateBtn.addEventListener( 'click', writePassword ());
 
 
 
-function getRandomLowercase () {
-  const lowercase= ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-  return lowercase [Math.floor(Math.random() * lowercase.length)];
-}
-
-function getRandomUppercase () {
-  const uppercase= ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-  return uppercase [Math.floor(Math.random() * uppercase.length)];
-}
-function getRandomNumber () {
-  const numbers = [1,2,3,4,5,6,7,8,9]
-  return numbers [Math.floor(Math.random() * numbers.length)];
-}
-function getRandomSymbol () {
-  const symbols= ['!', '@', '$', '_','?', '%', '+','&','*','#']
-  return symbols [Math.floor(Math.random() * symbols.length)];
-}
-  // console.log (getRandomLowercase ())
-  // console.log (getRandomUppercase ())
-  // console.log (getRandomNumber ())
-  // console.log (getRandomSymbol ())
-
-  const randomGenerate = {
-    lower: getRandomLowercase,
-    upper: getRandomUppercase,
-    number: getRandomNumber,
-    symbol: getRandomSymbol,
-  }
 function generatePassword () {
+  
+const numbers = [1,2,3,4,5,6,7,8,9];
+const symbols= ['!', '@', '$', '_','?', '%', '+','&','*','#']
+const lowercase= ['abcdefghijklmnopqrstuvwxyz']
+const uppercase= ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+
 
 const passLength = Number(prompt("How many characters would you like in your password? (must be at least 8 characters)"));
+if (!passLength) {
+  alert('Please choose a password length');
+
+}else if (passLength < 8 || passLength > 128) {
+  alert('Password Length must be between 8 and 128 characters long')
+}else {
 const includeLowercase = confirm("Would you like to use lowercase letters?");
 const includeUppercase = confirm("Would you like to use uppercase Letters?");
 const includeNumbers = confirm("Would you like to use numbers?");
 const includeSymbols = confirm("Would you like to use special characters?");
 
-let createdPass = '';
+var includedArr = '';
 
-const chosenIncluded = includeLowercase + includeUppercase + includeNumbers + includeSymbols;
-
-const includedArr = [includeLowercase, includeUppercase, includeNumbers, includeSymbols]
-console.log (includedArr);
+if (includeLowercase) {
+includedArr += lowercase;
 }
-// const numbers = [1,2,3,4,5,6,7,8,9];
-// const symbols= ['!', '@', '$', '_','?', '%', '+','&','*','#']
-// const lowercase= ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-// const uppercase= ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-// const hasLowercase = confirm("Would you like to use lowercase letters?");
-// const hasUppercase = confirm("Would you like to use uppercase Letters?");
-// const hasNumbers = confirm("Would you like to use numbers?");
-// const hasSymbols = confirm("Would you like to use special characters?");
 
+if (includeUppercase) {
+includedArr += uppercase;
+}
+
+if (includeNumbers) {
+includedArr += numbers
+}
+
+
+if (includeSymbols) {
+includedArr += symbols ;
+}
+console.log(includedArr)
+console.log(passLength)
+
+if (!includeLowercase && !includeUppercase && !includeNumbers && !includeSymbols){
+  alert('You must pick at least 1 character type to include')
+  return '';
+}
+for (var i = 0; i < passLength; i++) {
+  var random = includedArr[Math.floor(Math.random()*includedArr.length)];
+
+console.log(random)
+return random
+}
+  }
+}
