@@ -1,9 +1,10 @@
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-
+/*sets the html nd body to take up 100% of the space they have*/
 html,
 body,
 .wrapper {
@@ -11,25 +12,25 @@ body,
   margin: 0;
   padding: 0;
 }
-
+/* sets body font to sans-serif and sets the background color*/
 body {
   font-family: sans-serif;
   background-color: #f9fbfd;
 }
-
+/* sets the padding for the wrapper class that contains card where password is displayed and title*/
 .wrapper {
   padding-top: 30px;
   padding-left: 20px;
   padding-right: 20px;
 }
-
+/*tells the header to align center, gives it padding, and chooses its color*/
 header {
   text-align: center;
   padding: 20px;
   padding-top: 0px;
   color: hsl(206, 17%, 28%);
 }
-
+/*Sets the background color for the card where password is displayed, rounds the corners,sets borderwidth and shadow, sets font color and size, sets padding, and tells the .card that it can only be 800px at most */
 .card {
   background-color: hsl(0, 0%, 100%);
   border-radius: 5px;
@@ -41,7 +42,7 @@ header {
   max-width: 800px;
   padding: 30px 40px;
 }
-
+/*sets card header todisplay block taking up 100% of the space it has available sets backgorund color*/
 .card-header::after {
   content: " ";
   display: block;
@@ -49,15 +50,15 @@ header {
   background: #e7e9eb;
   height: 2px;
 }
-
+/*makes the card atleast 100px Tall*/
 .card-body {
   min-height: 100px;
 }
-
+/*sets the footer to align center*/
 .card-footer {
   text-align: center;
 }
-
+/*sets card footer todisplay block taking up 100% of the space it has available sets backgorund color*/
 .card-footer::before {
   content: " ";
   display: block;
@@ -71,7 +72,7 @@ header {
   display: block;
   clear: both;
 }
-
+/*sets the attributes of the button, incluing  rounding corners,giving it a shadow, font color margin and padding. the mouse become a pointer when you hover over it to help let user know its click-able*/
 .btn {
   border: none;
   background-color: hsl(360, 91%, 36%);
@@ -87,7 +88,7 @@ header {
   text-align: center;
   cursor: pointer;
 }
-
+/*if button is disabled cursor remains default*/
 button[disabled] {
   cursor: default;
   background: #c0c7cf;
@@ -96,7 +97,7 @@ button[disabled] {
 .float-right {
   float: right;
 }
-
+/* sets the attributes for the generated for the section in which the generated password is displayed, giving it a dashed border with rounded corners. defines padding and margins*/
 #password {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -117,7 +118,7 @@ button[disabled] {
   resize: none;
   overflow: hidden;
 }
-
+/* These set the responsiveness to different sized screen*/
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;
